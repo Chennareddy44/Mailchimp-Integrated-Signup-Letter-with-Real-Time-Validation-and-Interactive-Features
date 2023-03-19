@@ -22,23 +22,23 @@ app.post("/", function (req, res) {
             {
                 email_address: email,
                 status: "subscribed",
-                merge_fields: { // corrected typo in merge_fields
+                merge_fields: { 
                     FNAME: firstName,
                     LNAME: lastName
                 }
             }
         ]
     };
-    const jsonData = JSON.stringify(data); // corrected to pass in data instead of "data"
+    const jsonData = JSON.stringify(data);
 
-    const url = "https://us21.api.mailchimp.com/3.0/lists/30f829b8c8"; // corrected typo in URL
+    const url = "https://us21.api.mailchimp.com/3.0/lists/30f829b8c8";
 
-    const options = { // corrected typo in variable name and added missing closing brace
+    const options = {
         method: "POST",
         auth: "chenna44:495f8bdc156044e279cb1fff11778fa7-us21"
     };
 
-    const request = https.request(url, options, function (response) { // corrected to use options variable instead of Options
+    const request = https.request(url, options, function (response) {
 
         if (response.statusCode === 200) {
             res.sendFile(__dirname + "/success.html");
